@@ -1,23 +1,11 @@
 const express = require("express");
-
+const stateRouter = require("./routes/states.routes");
 const app = express();
 
 const PORT = 3000;
 
-function initialRequest(req, res) {
-  res.send(`Hello to api `);
-}
+app.use("/api/state", stateRouter);
 
-// This one runs for http://localhost:3000/
-app.get("/", initialRequest);
-
-// This one runs for http://localhost:3000/home
-app.get("/home", (req, res) => {
-  res.send(`Hello to Home`);
-});
-
-function callback() {
+app.listen(PORT, () => {
   console.log("Server Started at Port: " + PORT);
-}
-
-app.listen(PORT, callback);
+});
